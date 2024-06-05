@@ -1,7 +1,7 @@
 # configured aws provider with proper credentials
 provider "aws" {
-  region     = "us-east-2"
-  profile    = "Akeem4all"
+  region     = "us-east-1"
+  profile    = "ADEPEJU"
 }
 
 
@@ -22,7 +22,7 @@ resource "aws_vpc" "prodvpc" {
 resource "aws_subnet" "prodsubnet1" {
   vpc_id            = aws_vpc.prodvpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-1a"
   map_public_ip_on_launch = true
   
   tags = {
@@ -127,8 +127,8 @@ resource "aws_instance" "firstinstance" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_web.id]
   subnet_id              = aws_subnet.prodsubnet1.id
-  key_name               = "ADEPEMI_KEYPAIR"
-  availability_zone      = "us-east-2a"
+  key_name               = "ADEPEJU"
+  availability_zone      = "us-east-1a"
   user_data              =  "${file("install_jenkins.sh")}"
 
 
